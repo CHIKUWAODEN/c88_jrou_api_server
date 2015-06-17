@@ -64,31 +64,36 @@ Web サーバに対してリクエストを行うと、その応答としてレ�
 
 //list[jirou_json_format][ラーメン二郎のデータを JSON フォーマットで表現する][json]{
 {
-  shop_name : "ラーメン二郎 歌舞伎町店",
-  open      : "11:30",
-  last      : "04:30",
-  regular_holiday : []
-  address : {
-    prefecture  : "東京都",
-    city        : "新宿区",
-    address1    : "歌舞伎町",
-    address2    : "1-19-3",
-    postal_code : "160-0021"
+  "shop_name" : "ラーメン二郎 歌舞伎町店",
+  "open"      : "11:30",
+  "last"      : "04:30",
+  "regular_holiday" : []
+  "address" : {
+    "prefecture"  : "東京都",
+    "city"        : "新宿区",
+    "address1"    : "歌舞伎町",
+    "address2"    : "1-19-3",
+    "postal_code" : "160-0021"
   },
-  menues : [
-    { name : "普通盛"                 , price : 700  },
-    { name : "チャーシュー"           , price : 800  },
-    { name : "チャーシューダブル"     , price : 900  },
-    { name : "大盛"                   , price : 800  },
-    { name : "大盛チャーシュー"       , price : 900  },
-    { name : "大盛チャーシューダブル" , price : 1000 },
-    { name : "つけ麺普通"             , price : 800  },
-    { name : "つけ麺大盛"             , price : 900  },
-    { name : "キムチ"                 , price : 200  },
-    { name : "煮玉子"                 , price : 100  }
+  "menues" : [
+    { "name" : "普通盛"                 , "price" : 700  },
+    { "name" : "チャーシュー"           , "price" : 800  },
+    { "name" : "チャーシューダブル"     , "price" : 900  },
+    { "name" : "大盛"                   , "price" : 800  },
+    { "name" : "大盛チャーシュー"       , "price" : 900  },
+    { "name" : "大盛チャーシューダブル" , "price" : 1000 },
+    { "name" : "つけ麺普通"             , "price" : 800  },
+    { "name" : "つけ麺大盛"             , "price" : 900  },
+    { "name" : "キムチ"                 , "price" : 200  },
+    { "name" : "煮玉子"                 , "price" : 100  }
   ],
-  created   : "Fri Jun 12 23:03:50 JST 2015",
-  modified  : "Fri Jun 12 23:03:50 JST 2015",
+  "estimation" : {
+    "buta" : 5.0,
+    "men"  : 5.0,
+    "soup" : 5.0
+  }
+  "created"   : "Fri Jun 12 23:03:50 JST 2015",
+  "modified"  : "Fri Jun 12 23:03:50 JST 2015"
 }
 //}
 
@@ -112,6 +117,23 @@ address.postal_code		String						郵便番号
 menues								Array of Object 	メニュー
 menues[].name					String						商品名
 menues[].price				Integer						値段
+estimation.buta       Float             ブタについての評価を表す値
+estimation.men        Float             麺についての評価を表す値
+estimation.soup       Float             スープについての評価を表す値
 created								String						データ登録日（文字列表現）
 modified							String						データ更新日（文字列表現）
 //}
+
+API の返すデータの設計はすなわち、二郎というものをどのように捉え、どう数値化するか
+といった問題に対する答えとなります。
+だれが見ても一意であるような情報である、住所やメニューといった情報をそのままデータ設計に落としこむのは簡単です。
+問題となるのは、味わいの部分です。
+もっと詳しくいうのであれば、麺の形状や茹で具合、当たり外れがあると言われるブタ（チャーシュー）の仕上がり、スープの仕上がりといった部分です。
+これらをデータとして表現する場合、味について計測する標準的な手法がなく、個々人の感覚に頼った評価をしなくてはならないという点が問題になります。
+
+ぐるなびなどを例にすると分かりやすいのですが、こういったものはレート制を導入するのがよくあるパターンでしょう。
+主観的となる評価を一定の範囲内で点数として表してもらい、それを平均するなどした値を、味に対するユーザー全体の意見として利用します。
+
+店ごとに存在するテイストはまた別に表現します。
+たとえば、量について言えば、目黒店などはそれほど多くなく、神保町店などは逆にトップクラスに量が多いというのはよくいわれている話しです。
+こういったものはコメント的な値として持たせておくようにします。
