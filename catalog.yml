@@ -3,8 +3,12 @@ PREDEF:
 
 CHAPS:
   - design.re
+  - implement.re
+  - deploy.re
+  - api.re
 
 APPENDIX:
+  - reference.re
 
 POSTDEF:
-
+  - outro.re
