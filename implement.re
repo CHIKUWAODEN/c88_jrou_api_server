@@ -113,7 +113,7 @@ func ParseOption() (option *Option) {
 
 Goにはちょうどいい具合に、シンプルなKVSのライブラリがいくつかあるようです.
 今回は@<href>{https://github.com/syndtr/goleveldb, syndtr/goleveldb}@<fn>{fn_goleveldb}というものを使ってみます.
-@<href>{http://leveldb.org/, LevelDB}@<fn>{fn_leveldb}がGoogle由来の技術（？）であり、Go言語と合わせてGoogleで染めていくスタイルでいきましょう.
+@<href>{http://leveldb.org/, LevelDB}@<fn>{fn_leveldb}がGoogle由来の技術（？）であり、Goと合わせてGoogleで染めていくスタイルでいきましょう.
 
 
 //footnote[fn_leveldb][http://leveldb.org/]
@@ -168,9 +168,9 @@ func Setup() error {
 //}
 
 もしかしたら、いちいち大きい文字列で書いた後にバラさず、店舗ごとに一つのJSON文字列リテラルを書いて、
-それをPutする処理をずらずら書いた方が良かったかもしれません。
+それをPutする処理をずらずら書いた方が良かったかもしれません.
 この書き方だと、一部の店舗データを無効にするといったこともやりづらい（コメントアウトなどができない）ですし、
-なにより、実装と関係ないところで関数が無駄に長くなっています。
+なにより、実装と関係ないところで関数が無駄に長くなっています.
 
 
 == HTTPサーバ機能の実装
@@ -178,9 +178,9 @@ func Setup() error {
 Goの標準ライブラリには、プログラムをHTTPサーバとして動作させるためのパッケージが含まれています.
 HTTPサーバに関しては、これをそのまま使ってみたいと思います.
 
-サーバとしてHTTPリクエストの受付を開始する処理は、Server.Run()メソッド内に含まれています（@<list>{start_serving}）。
-ポート番号とルーターのインスタンスを引数として、http.ListenAndServe()をコールするだけです。
-じつに簡単ですねえ。
+サーバとしてHTTPリクエストの受付を開始する処理は、Server.Run()メソッド内に含まれています（@<list>{start_serving}）.
+ポート番号とルーターのインスタンスを引数として、http.ListenAndServe()をコールするだけです.
+じつに簡単ですねえ.
 
 
 //list[start_serving][HTTPサーバの処理を開始する]{
@@ -198,9 +198,9 @@ func (self *Server) Run(serverOption *Option) {
 
 === ルーティング
 
-@<hd>{HTTPサーバ機能の実装}にて、ルータという単語が出てきました。
+@<hd>{HTTPサーバ機能の実装}にて、ルータという単語が出てきました.
 ルータとはURLとサーバプログラム内にあるメソッドをマッピングするために用いるもの、その役割を担うものを指します.
-たとえば、example.com/path/to/hoge というURIについてリクエストがあったら、プログラム内のPathToHoge()という処理をコールするとしましょう。
+たとえば、example.com/path/to/hoge というURIについてリクエストがあったら、プログラム内のPathToHoge()という処理をコールするとしましょう.
 このようなマッピングを行う処理のことをルーティング、それを行うプログラムをルータといいます.
 
 Goには標準的なルータの実装は無く、各種Web系のフレームワークに含まれていたり、そこからフォークして作られたライブラリを使うのが一般的なようです.
@@ -217,7 +217,7 @@ httprouter.HttpRouterにはGET()やPOST()といった各種のリクエストメ
 
 実際にルーティングを行っているソースコードを部分的に抜粋したものが@<list>{routing}となります.
 self.Search, self.Readなどとしているところに注目してみましょう.
-このように記述するだけで、実際にSearchなどが呼び出されるときにちゃんとselfが適当なインスタンスを参照してくれます。
+このように記述するだけで、実際にSearchなどが呼び出されるときにちゃんとselfが適当なインスタンスを参照してくれます.
 
 //list[routing][ルーティングを行うソースコードの例]{
 // Server class
@@ -243,22 +243,22 @@ func (self *Server) Run(serverOption *Option) {
 }
 //}
 
-@<code>{router.GET("/v1/jirou", self.Search)}などはわかりやすい例でしょう。
-これは見たまんま、/v1/jirouというパスでアクセスがきたら、self.Search()を呼び出すものです。
+@<code>{router.GET("/v1/jirou", self.Search)}などはわかりやすい例でしょう.
+これは見たまんま、/v1/jirouというパスでアクセスがきたら、self.Search()を呼び出すものです.
 
 @<code>{router.GET("/v1/jirou/:id", self.Read)}は、
-コールバックされるメソッドの処理の中で、URIの一部を引数のように扱うためのものです。
-たとえば、/v1/jirou/1などといったパスにアクセスした場合、コールバックではidという名前で1という値が取得できます。
-より具体的な例を@<hd>{header_server_read}にて解説しています。
+コールバックされるメソッドの処理の中で、URIの一部を引数のように扱うためのものです.
+たとえば、/v1/jirou/1などといったパスにアクセスした場合、コールバックではidという名前で1という値が取得できます.
+より具体的な例を@<hd>{header_server_read}にて解説しています.
 
 
 == APIメソッドの実装例
 
 === 例1 Server.Search()
 
-GoのプログラムをHTTPサーバとして動作させ、ルーティングを行うところを解説しました。
-続いて、実際にAPIの呼び出しによって行われる処理とその実装について紹介します。
-サンプルとして、Server.Search()メソッドをとりあげます（@<list>{server_search}）。
+GoのプログラムをHTTPサーバとして動作させ、ルーティングを行うところを解説しました.
+続いて、実際にAPIの呼び出しによって行われる処理とその実装について紹介します.
+サンプルとして、Server.Search()メソッドをとりあげます（@<list>{server_search}）.
 
 
 //list[server_search][Server.Search()]{
@@ -289,15 +289,15 @@ func (self *Server) Search(writer http.ResponseWriter,
 }
 //}
 
-HTTPリクエストに応じてコールされてくるこの関数は、引数にwriter http.ResponseWriterというのを持っています。
-このwriterに生えているHeader()やWrite()といったメソッドが実際にレスポンスの内容を設定します。
+HTTPリクエストに応じてコールされてくるこの関数は、引数にwriter http.ResponseWriterというのを持っています.
+このwriterに生えているHeader()やWrite()といったメソッドが実際にレスポンスの内容を設定します.
 それより先にごにょごにょと処理をしていますが、これらはDBへのアクセスを行ったり、レスポンスとなる文字列を組み立てる、
-といった内容になっています。
+といった内容になっています.
 
 ==={header_server_read} 例2 Server.Read()
 
 もうひとつ、URIの一部を引数のように扱うためのhttprouter.Paramsを使った例として、
-Server.Read()の実装について紹介しましょう（@<list>{server_read}）。
+Server.Read()の実装について紹介しましょう（@<list>{server_read}）.
 
 //list[server_read][Server.Read()]{
 func (self *Server) Read(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -319,7 +319,7 @@ func (self *Server) Read(writer http.ResponseWriter, request *http.Request, para
 
 このコードの下記の二行で、URIの一部を引数のように取得するための処理を行っています.
 ルーティングの設定（@<list>{routing}）でURIパターン文字列に:idというものを指定したのを思い出してみましょう.
-この:idというのを、セミコロンを省いた形を名前として、httprouter.Params.ByName()というメソッドで取り出すことができます。
+この:idというのを、セミコロンを省いた形を名前として、httprouter.Params.ByName()というメソッドで取り出すことができます.
 
 //list[server_read_params][Server.Read()]{
 key := []byte(params.ByName("id"))
