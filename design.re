@@ -157,6 +157,9 @@ sun から sat まではそれぞれウィークデーを表し、national は�
 }
 //}
 
+#@warn(戻り値についてとそのサンプルを書く)
+#@warn(内部的にcreatedやUUIDなどの情報を追加していることを書く)
+
 
 === GET /jirou/v1/jirou/:id/report  
 

@@ -1,20 +1,24 @@
 = 参考資料
 
-http://golang.org
+今回参考にしたWebサイトなどを紹介します.
 
-いわずとしれた Go 言語のオフィシャルサイト.
+: @<href>{http://golang.org}
+  いわずとしれたGoのオフィシャルサイトです.
+  特にEffective Goというコンテンツは、知見に満ちあふれているのでGoを学ぶのであれば必読でしょう.
+: @<href>{http://leveldb.org/}
+  LevelDBのオフィシャルサイト.
+  LevelDBそのものについての知識からすくっていきたい場合は、こちらからチェックしていきましょう.
 
-https://www.docker.com/
+本書で実装したサーバでは、次のライブラリを利用させて頂いています.
+この場を借りて、各ライブラリの作者様にお礼申し上げる次第です.
 
-いわずとしれた Docker のオフィシャルサイト.
+: @<href>{https://github.com/syndtr/goleveldb}
+  LevelDBをGoからあつかうためのライブラリ.
+  データベースまわりの実装に使用しました.
+: @<href>{https://github.com/julienschmidt/httprouter}
+  標準のhttpパッケージと組み合わせて利用できる、ルーティングライブラリ.
+  リクエストされたURIに応じて内部的に呼び出す処理を振り分けるために利用しています.
+: @<href>{https://github.com/pborman/uuid}
+  UUIDを生成するためのライブラリ.
+  今回はレポートAPIにおいて、個々のレポートに付与するUUIDを生成するために使用しています.
 
-
-http://qiita.com/suin/items/f7ac4de914e9f3f35884
-
-エラーまわりの設計にあたり参考にさせていただきました.
-
-
-http://qiita.com/kiida/items/6a12071ca382cac98b4d
-
-
-boltdb を利用するにあたって参考にさせていただきました.
