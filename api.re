@@ -12,19 +12,18 @@ Git といったツールや Github については本誌では解説はして�
 
 === 補助的なツールのインストール
 
-開発環境やテスト環境は、いくつかの外部ツールを利用しています（@<table>{tools}）.
+開発環境やテスト環境は、いくつかの外部ツールを利用しています.
 筆者はOS X上で作業しており、コマンドラインなどはこれを前提とした格好になっていますが、
 LinuxなどのOSであれば、同様のツールチェインをそろえるのは容易かと思います.
 Windows上での動作はまったく考慮していないため、もし手元にWindowsしか無いような場合は、
 VirtualBoxなどで仮想化環境を用意するほうが、手っ取り早いかと思います.
 
-//table[tools][jirouをサポートするツール]{
-ツール名																		説明
--------------------------------------------------------------------------------
-@<href>{http://curl.haxx.se/, curl}					説明不要かと
-@<href>{http://stedolan.github.io/jq/, jq}	コマンドラインJSONプロセッサ
-@<href>{https://github.com/mattn/gom, gom}	パッケージマネジメントツール
-//}
+: @<href>{http://curl.haxx.se/, curl}
+  説明不要かと
+: @<href>{http://stedolan.github.io/jq/, jq}
+  コマンドラインJSONプロセッサ
+: @<href>{https://github.com/mattn/gom, gom}
+  Goのパッケージマネジメントツール（RubyでいうところのBundler的なもの）
 
 //list[install_tools][jirouをサポートするツールのインストール]{
 $ brew install jq curl

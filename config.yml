@@ -9,7 +9,7 @@ bookname: book
 # 記述言語。省略した場合はja
 language: ja
 # 書名
-booktitle: "モダン実装ラーメン二郎API"
+booktitle: "Goでラーメン二郎WEB APIサーバ"
 # 固有IDに使用するドメイン。省略した場合は時刻に基づくランダムUUIDが入る
 urnid: 
 # ISBN。省略した場合はurnidが入る
@@ -90,7 +90,7 @@ secnolevel: 3
 # 表紙にするHTMLファイル。ファイル名を指定すると表紙として入る
 # cover: _cover.html
 # 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)
-coverimage: cover.jpg
+# coverimage: cover.jpg
 # 表紙の後に大扉ページを作成するか。省略した場合はnull (作成しない)
 # titlepage: null
 # 自動生成される大扉ページを上書きするファイル。ファイル名を指定すると大扉として入る

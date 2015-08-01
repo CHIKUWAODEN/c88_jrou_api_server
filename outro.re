@@ -50,4 +50,23 @@ Goでは、これを言語の機能で支えるため、いくつかの戻り値
 
 == スペシャルサンクス
 
-カモンカモハラa.k.aノーズファッキンビッグボーイfeat世界に一つだけの鼻with C'mon New Waves 
+カモンカモハラa.k.aノーズファッキンビッグボーイfeat世界に一つだけの鼻with C'mon New Waves@<br>{}
+
+表紙の作成にあたり、Takeshi Kiriya氏によって@<href>{https://www.flickr.com/photos/takeshik/17340378692}で公開されている画像を、
+Creative Commons ライセンスに基づき、改変を加えた上で利用させていただきました.
+Createve Commons ライセンスについては@<href>{https://creativecommons.org/licenses/by/2.0/}を参照してください.
+
+
+== 奥付
+
+: 誌名
+ Goでラーメン二郎WEB APIサーバ
+: 著者
+ ちくわおでん @kandayasu
+: 発行日
+ 2015年8月14日
+: 印刷
+ ちょこっと製本工房 @<href>{http://www.chokotto.jp/}
+
+
+
